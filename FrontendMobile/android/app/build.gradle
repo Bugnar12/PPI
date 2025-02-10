@@ -1,0 +1,53 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.frontend_mobile" // Specify the namespace here
+    compileSdk = flutter.compileSdkVersion // Use Flutter's compileSdkVersion from the configuration
+    ndkVersion = flutter.ndkVersion // Use Flutter's ndkVersion if required
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8 // Ensure Java compatibility
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Kotlin JVM target version
+    }
+
+    defaultConfig {
+        minSdkVersion flutter.minSdkVersion // Use Flutter's minSdkVersion
+        applicationId = "com.example.frontend_mobile" // Unique application ID
+        targetSdkVersion = flutter.targetSdkVersion // Use Flutter's targetSdkVersion
+        versionCode = flutter.versionCode // Version code from Flutter
+        versionName = flutter.versionName // Version name from Flutter
+    }
+
+    buildTypes {
+        release {
+            // Configure release build
+            shrinkResources false
+            // Disable code shrinking (already off by default)
+            minifyEnabled false
+            signingConfig signingConfigs.debug // Use debug signing for testing
+        }
+    }
+
+    // Add this if you encounter specific issues with platform views or other Flutter plugins
+    buildFeatures {
+        viewBinding true // Enable view binding if required
+    }
+}
+
+flutter {
+    source = "../.." // Path to Flutter project
+}
+
+// Add additional dependencies or configurations if required
+dependencies {
+    // Ensure the appropriate Flutter and Android dependencies are included
+}
